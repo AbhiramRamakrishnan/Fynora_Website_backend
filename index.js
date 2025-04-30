@@ -10,8 +10,15 @@ const cors = require('cors');
 // Initialize Express app
 const app = express();
 
-// Enable CORS so frontend can make requests
-app.use(cors());
+// CORS Configuration: Allow frontend to make requests to this backend
+const corsOptions = {
+    origin: 'https://abhiramramakrishnan.github.io/Fynora_Website/',  // Replace with your frontend URL
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type']
+};
+
+// Use CORS middleware with the specified options
+app.use(cors(corsOptions));
 
 // Parse incoming request bodies
 app.use(bodyParser.urlencoded({ extended: true }));
